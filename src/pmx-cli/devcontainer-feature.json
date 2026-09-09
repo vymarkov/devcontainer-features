@@ -1,0 +1,21 @@
+{
+    "id": "pmx-cli",
+    "version": "1.0.0",
+    "name": "pmx (Proxmox CLI)",
+    "documentationURL": "https://github.com/fivetwenty-io/proxmox-cli",
+    "description": "Installs the pmx Proxmox CLI (VE / Backup Server / Datacenter Manager) via eget from fivetwenty-io/proxmox-cli release binaries.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "v0.6.1",
+                "latest"
+            ],
+            "default": "v0.6.1",
+            "description": "pmx release tag to install (e.g. v0.6.1). Use 'latest' for the newest GitHub release. Bare semver (0.6.1) is accepted and normalized to v0.6.1."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget"
+    ]
+}

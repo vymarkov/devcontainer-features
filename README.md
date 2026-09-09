@@ -6,7 +6,7 @@
 
 ## Example Contents
 
-This repository contains a _collection_ of Features - `hello`, `color`, and `truenas-cli`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
+This repository contains a _collection_ of Features - `hello`, `color`, `truenas-cli`, and `pmx-cli`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
 
 ### `hello`
 
@@ -70,6 +70,27 @@ $ midclt -h
 $ midclt --uri ws://<TRUENAS_IP>/api/current -K <api-key> call system.info
 ```
 
+### `pmx-cli`
+
+Installs the [`pmx`](https://github.com/fivetwenty-io/proxmox-cli) Proxmox CLI via `eget`. Requires the community [`zyedidia-eget`](https://github.com/devcontainer-community/devcontainer-features/tree/main/src/zyedidia-eget) Feature (`installsAfter` only orders install; declare eget explicitly).
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {},
+        "./src/pmx-cli": {
+            "version": "v0.6.1"
+        }
+    }
+}
+```
+
+```bash
+$ pmx --help
+$ pve --help
+```
+
 ## Repo and Feature Structure
 
 Similar to the [`devcontainers/features`](https://github.com/devcontainers/features) repo, this repository has a `src` folder.  Each Feature has its own sub-folder, containing at least a `devcontainer-feature.json` and an entrypoint script `install.sh`. 
@@ -83,6 +104,9 @@ Similar to the [`devcontainers/features`](https://github.com/devcontainers/featu
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
 │   ├── truenas-cli
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+│   ├── pmx-cli
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
 |   ├── ...
