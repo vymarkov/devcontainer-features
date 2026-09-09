@@ -7,10 +7,7 @@ Installs the pmx Proxmox CLI (VE / Backup Server / Datacenter Manager) via eget 
 
 ```json
 "features": {
-    "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {},
-    "ghcr.io/vymarkov/devcontainer-features/pmx-cli:1": {
-        "version": "v0.6.1"
-    }
+    "ghcr.io/vymarkov/devcontainer-features/pmx-cli:1": {}
 }
 ```
 
@@ -20,16 +17,24 @@ Installs the pmx Proxmox CLI (VE / Backup Server / Datacenter Manager) via eget 
 |-----|-----|-----|-----|
 | version | pmx release tag to install (e.g. v0.6.1). Use 'latest' for the newest GitHub release. Bare semver (0.6.1) is accepted and normalized to v0.6.1. | string | v0.6.1 |
 
-## pmx CLI
+## Requirements
 
-This Feature installs [`fivetwenty-io/proxmox-cli`](https://github.com/fivetwenty-io/proxmox-cli) using `eget`. It requires the [`zyedidia-eget`](https://github.com/devcontainer-community/devcontainer-features/tree/main/src/zyedidia-eget) Feature to be present (`installsAfter` only orders install; it does not pull eget automatically).
+This Feature installs `pmx` with [`eget`](https://github.com/zyedidia/eget). It does **not** install eget itself.
 
-Persona symlinks `pve`, `pbs`, and `pdm` are created next to `pmx`.
+Add the community eget Feature to your `devcontainer.json` so it is present before `pmx-cli` runs:
 
-```bash
-pmx --help
-pve --help
+```jsonc
+"features": {
+    "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {},
+    "ghcr.io/vymarkov/devcontainer-features/pmx-cli:1": {
+        "version": "v0.6.1"
+    }
+}
 ```
+
+## Personas
+
+After install, `pve`, `pbs`, and `pdm` are symlinks to `pmx` (persona mode based on `argv[0]`).
 
 
 ---
