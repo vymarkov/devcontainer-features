@@ -6,7 +6,7 @@
 
 ## Example Contents
 
-This repository contains a _collection_ of two Features - `hello` and `color`. These Features serve as simple feature implementations.  Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
+This repository contains a _collection_ of Features - `hello`, `color`, and `truenas-cli`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
 
 ### `hello`
 
@@ -50,6 +50,26 @@ $ color
 my favorite color is green
 ```
 
+### `truenas-cli`
+
+Installs the official TrueNAS websocket API client (`midclt`) from [`truenas/api_client`](https://github.com/truenas/api_client).
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "./src/truenas-cli": {
+            "version": "TS-25.10.7"
+        }
+    }
+}
+```
+
+```bash
+$ midclt -h
+$ midclt --uri ws://<TRUENAS_IP>/api/current -K <api-key> call system.info
+```
+
 ## Repo and Feature Structure
 
 Similar to the [`devcontainers/features`](https://github.com/devcontainers/features) repo, this repository has a `src` folder.  Each Feature has its own sub-folder, containing at least a `devcontainer-feature.json` and an entrypoint script `install.sh`. 
@@ -60,6 +80,9 @@ Similar to the [`devcontainers/features`](https://github.com/devcontainers/featu
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
 │   ├── color
+│   │   ├── devcontainer-feature.json
+│   │   └── install.sh
+│   ├── truenas-cli
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
 |   ├── ...

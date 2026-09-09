@@ -1,0 +1,23 @@
+{
+    "id": "truenas-cli",
+    "version": "1.0.0",
+    "name": "TrueNAS CLI",
+    "documentationURL": "https://github.com/truenas/api_client",
+    "description": "Installs the official TrueNAS websocket API client (midclt) for calling TrueNAS middleware from a remote host.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "TS-25.10.7",
+                "TS-25.10.3",
+                "TS-25.04"
+            ],
+            "default": "latest",
+            "description": "TrueNAS api_client git tag to install (e.g. TS-25.10.7). Use 'latest' for the newest non-beta tag."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
