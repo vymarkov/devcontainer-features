@@ -1,0 +1,32 @@
+{
+    "id": "cursor-agent",
+    "version": "1.0.0",
+    "name": "Cursor Agent CLI",
+    "documentationURL": "https://cursor.com/docs/cli/overview",
+    "description": "Installs the Cursor Agent CLI via eget from downloads.cursor.com and persists ~/.cursor across rebuilds.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "2026.09.08-6caf4ff",
+                "latest"
+            ],
+            "default": "2026.09.08-6caf4ff",
+            "description": "Cursor Agent CLI lab version (e.g. 2026.09.08-6caf4ff). Use 'latest' to scrape the version from https://cursor.com/install."
+        }
+    },
+    "mounts": [
+        {
+            "source": "cursor-dir-${devcontainerId}",
+            "target": "/mnt/cursor-dir",
+            "type": "volume"
+        }
+    ],
+    "installsAfter": [
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget",
+        "ghcr.io/devcontainers/features/common-utils"
+    ],
+    "onCreateCommand": {
+        "cursor-agent-persist": "/usr/local/share/cursor-agent-feature/oncreate.sh"
+    }
+}

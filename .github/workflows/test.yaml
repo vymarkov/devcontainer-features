@@ -29,6 +29,7 @@ jobs:
       - name: "Generating tests for '${{ matrix.features }}' against '${{ matrix.baseImage }}'"
         run: devcontainer features test --skip-scenarios -f ${{ matrix.features }} -i ${{ matrix.baseImage }} .
 
+  # Features that require sibling deps (e.g. eget) are scenario-tested only.
   test-scenarios:
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -38,6 +39,8 @@ jobs:
           - color
           - hello
           - truenas-cli
+          - pmx-cli
+          - cursor-agent
     steps:
       - uses: actions/checkout@v4
 

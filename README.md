@@ -6,7 +6,7 @@
 
 ## Example Contents
 
-This repository contains a _collection_ of Features - `hello`, `color`, `truenas-cli`, and `pmx-cli`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
+This repository contains a _collection_ of Features - `hello`, `color`, `truenas-cli`, `pmx-cli`, and `cursor-agent`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
 
 ### `hello`
 
@@ -91,6 +91,27 @@ $ pmx --help
 $ pve --help
 ```
 
+### `cursor-agent`
+
+Installs the [Cursor Agent CLI](https://cursor.com/docs/cli/overview) via `eget` from `downloads.cursor.com`, and persists `~/.cursor` across rebuilds with a named volume. Requires the community [`zyedidia-eget`](https://github.com/devcontainer-community/devcontainer-features/tree/main/src/zyedidia-eget) Feature.
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {},
+        "./src/cursor-agent": {
+            "version": "2026.09.08-6caf4ff"
+        }
+    }
+}
+```
+
+```bash
+$ agent --version
+$ cursor-agent --version
+```
+
 ## Repo and Feature Structure
 
 Similar to the [`devcontainers/features`](https://github.com/devcontainers/features) repo, this repository has a `src` folder.  Each Feature has its own sub-folder, containing at least a `devcontainer-feature.json` and an entrypoint script `install.sh`. 
@@ -109,6 +130,10 @@ Similar to the [`devcontainers/features`](https://github.com/devcontainers/featu
 │   ├── pmx-cli
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
+│   ├── cursor-agent
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── oncreate.sh
 |   ├── ...
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh

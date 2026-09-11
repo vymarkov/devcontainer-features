@@ -1,0 +1,24 @@
+{
+    "with_eget": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {
+                "version": "latest"
+            },
+            "cursor-agent": {
+                "version": "2026.09.08-6caf4ff"
+            }
+        }
+    },
+    "pinned_version": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {
+                "version": "latest"
+            },
+            "cursor-agent": {
+                "version": "2026.09.08-6caf4ff"
+            }
+        }
+    }
+}
