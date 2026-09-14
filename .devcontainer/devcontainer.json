@@ -18,7 +18,16 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {
+            "version": "latest"
+        },
+        "./src/truenas-cli": {
+            "version": "TS-26.0.0-BETA.3"
+        },
+        "./src/pmx-cli": {
+            "version": "v0.6.1"
+        }
     },
     "remoteUser": "node",
     "updateContentCommand": "npm install -g @devcontainers/cli"
