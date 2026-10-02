@@ -41,6 +41,7 @@ jobs:
           - truenas-cli
           - pmx-cli
           - cursor-agent
+          - atuin
     steps:
       - uses: actions/checkout@v4
 

@@ -6,7 +6,7 @@
 
 ## Example Contents
 
-This repository contains a _collection_ of Features - `hello`, `color`, `truenas-cli`, `pmx-cli`, and `cursor-agent`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
+This repository contains a _collection_ of Features - `hello`, `color`, `truenas-cli`, `pmx-cli`, `cursor-agent`, and `atuin`. Each sub-section below shows a sample `devcontainer.json` alongside example usage of the Feature.
 
 ### `hello`
 
@@ -112,6 +112,33 @@ $ agent --version
 $ cursor-agent --version
 ```
 
+### `atuin`
+
+Installs [Atuin](https://docs.atuin.sh/) via `eget`, persists `~/.local/share/atuin` with a named volume, and optionally logs in/syncs on create when `ATUIN_*` env vars are set. Requires the community [`zyedidia-eget`](https://github.com/devcontainer-community/devcontainer-features/tree/main/src/zyedidia-eget) Feature.
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget:1": {},
+        "./src/atuin": {
+            "version": "latest"
+        }
+    },
+    "containerEnv": {
+        "ATUIN_SYNC_ADDRESS": "https://atuin.example.ts.net",
+        "ATUIN_USERNAME": "you",
+        "ATUIN_PASSWORD": "secret",
+        "ATUIN_KEY": "your-encryption-key"
+    }
+}
+```
+
+```bash
+$ atuin --version
+$ atuin status
+```
+
 ## Repo and Feature Structure
 
 Similar to the [`devcontainers/features`](https://github.com/devcontainers/features) repo, this repository has a `src` folder.  Each Feature has its own sub-folder, containing at least a `devcontainer-feature.json` and an entrypoint script `install.sh`. 
@@ -131,6 +158,10 @@ Similar to the [`devcontainers/features`](https://github.com/devcontainers/featu
 │   │   ├── devcontainer-feature.json
 │   │   └── install.sh
 │   ├── cursor-agent
+│   │   ├── devcontainer-feature.json
+│   │   ├── install.sh
+│   │   └── oncreate.sh
+│   ├── atuin
 │   │   ├── devcontainer-feature.json
 │   │   ├── install.sh
 │   │   └── oncreate.sh
