@@ -1,0 +1,32 @@
+{
+    "id": "atuin",
+    "version": "1.0.0",
+    "name": "Atuin",
+    "documentationURL": "https://docs.atuin.sh/",
+    "description": "Installs Atuin, persists ~/.local/share/atuin across rebuilds, and optionally logs in/syncs on create from ATUIN_* env vars.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "18.23.0"
+            ],
+            "default": "latest",
+            "description": "Atuin version to install (latest or X.Y.Z / vX.Y.Z)."
+        }
+    },
+    "mounts": [
+        {
+            "source": "atuin-data-${devcontainerId}",
+            "target": "/mnt/atuin-data",
+            "type": "volume"
+        }
+    ],
+    "installsAfter": [
+        "ghcr.io/devcontainer-community/devcontainer-features/zyedidia-eget",
+        "ghcr.io/devcontainers/features/common-utils"
+    ],
+    "onCreateCommand": {
+        "atuin-setup": "/usr/local/share/atuin-feature/oncreate.sh"
+    }
+}
